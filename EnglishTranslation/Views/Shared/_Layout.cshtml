@@ -3,42 +3,64 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
+    <title>Bright Day Center</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/ETranslation.js"></script>
+    <link href="~/Content/Etran.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="wrap">
+        <div class="wrapper">
+            <div class="logo">
+                <a href="index.html"><h1>BrightDay</h1></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="header_right">
+                <div class="cssmenu">
+                    <ul>
+                        <li class="active"><a onclick="gotoHome()"><span>Home</span></a></li>
+                        <li><a onclick="gotoAbout()"><span>About</span></a></li>
+                        <li><a onclick="gotoCommtor()"><span>Commtor</span></a></li>
+                        <li class="has-sub"><a onclick="gotoService()"><span>Services</span></a></li>
+                        <li class="last"><a onclick="gotoContact"><span>Contact</span></a></li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
             </div>
+            <div class="clear"></div>
         </div>
     </div>
+
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <div class="wrap">
+        <div class="wrapper">
+            <div class="footer">
+                <div class="social-icons">
+                    <ul>
+                        <li class="icon_1"><a href="#" target="_blank"> </a></li>
+                        <li class="icon_2"><a href="#" target="_blank"> </a></li>
+                        <li class="icon_3"><a href="#" target="_blank"> </a></li>
+                        <li class="icon_4"><a href="#" target="_blank"> </a></li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <a href="index.html"><h2>Bright Day</h2></a>
+                <div class="copy">
+                    <p class="w3-link">© 2013 Bright Day. All Rights Reserved | Design by&nbsp; <a href="http://w3layouts.com/"> Bright Day Center System</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
     @RenderSection("scripts", required: false)
 </body>
 </html>
