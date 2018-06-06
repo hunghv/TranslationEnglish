@@ -10,9 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
     <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Scripts/toastr.js"></script>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/ETranslation.js"></script>
     <link href="~/Content/Etran.css" rel="stylesheet" />
+
     <script type="text/javascript">
         Etran.HomeUrl = "@Url.Action("Index", "Home")";
         Etran.AboutUrl = "@Url.Action("About", "Home")";
@@ -25,7 +27,7 @@
     <div class="wrap">
         <div class="wrapper">
             <div class="logo">
-                <a href="index.html"><h1>BrightDay</h1></a>
+                <a onclick="gotoHome()"><h1>BrightDay</h1></a>
             </div>
             <div class="header_right">
                 <div class="cssmenu">

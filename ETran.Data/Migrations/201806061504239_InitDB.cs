@@ -3,7 +3,7 @@ namespace ETran.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class InitDB : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace ETran.Data.Migrations
                 "dbo.Attachments",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         ReportId = c.Int(),
                         AttachmentFile = c.Binary(),
                         AttachmentName = c.String(),
@@ -32,9 +32,29 @@ namespace ETran.Data.Migrations
                 "dbo.Categories",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Description = c.String(),
+                        IsDeleted = c.Boolean(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        CreatedBy = c.Int(nullable: false),
+                        ModifiedDate = c.DateTime(),
+                        ModifiedBy = c.Int(),
+                        DeletedDate = c.DateTime(),
+                        DeletedBy = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Contacts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Email = c.String(),
+                        Phone = c.String(),
+                        Subject = c.String(),
+                        IsSendMail = c.Boolean(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
                         CreatedBy = c.Int(nullable: false),
@@ -49,7 +69,7 @@ namespace ETran.Data.Migrations
                 "dbo.Countries",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         CountryName = c.String(maxLength: 150),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
@@ -65,7 +85,7 @@ namespace ETran.Data.Migrations
                 "dbo.CoverImages",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         FileName = c.String(maxLength: 100),
                         Extension = c.String(maxLength: 50),
                         Mime = c.String(maxLength: 50),
@@ -84,7 +104,7 @@ namespace ETran.Data.Migrations
                 "dbo.News",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Title = c.String(),
                         ImageId = c.Int(nullable: false),
                         PostedDate = c.DateTime(nullable: false),
@@ -102,23 +122,20 @@ namespace ETran.Data.Migrations
                         ModifiedBy = c.Int(),
                         DeletedDate = c.DateTime(),
                         DeletedBy = c.Int(),
-                        Category_Id = c.Guid(),
-                        Image_Id = c.Guid(),
-                        Status_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Categories", t => t.Category_Id)
-                .ForeignKey("dbo.CoverImages", t => t.Image_Id)
-                .ForeignKey("dbo.Status", t => t.Status_Id)
-                .Index(t => t.Category_Id)
-                .Index(t => t.Image_Id)
-                .Index(t => t.Status_Id);
+                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.CoverImages", t => t.ImageId, cascadeDelete: true)
+                .ForeignKey("dbo.Status", t => t.StatusId, cascadeDelete: true)
+                .Index(t => t.ImageId)
+                .Index(t => t.CategoryId)
+                .Index(t => t.StatusId);
             
             CreateTable(
                 "dbo.NewsComments",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         NewsId = c.Int(nullable: false),
                         ParentCommentId = c.Int(),
                         Comment = c.String(),
@@ -130,29 +147,26 @@ namespace ETran.Data.Migrations
                         ModifiedBy = c.Int(),
                         DeletedDate = c.DateTime(),
                         DeletedBy = c.Int(),
-                        NewsComment_Id = c.Guid(),
-                        News_Id = c.Guid(),
-                        ParentComment_Id = c.Guid(),
-                        UserProfile_Id = c.Guid(),
-                        News_Id1 = c.Guid(),
+                        NewsComment_Id = c.Int(),
+                        News_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.NewsComments", t => t.NewsComment_Id)
+                .ForeignKey("dbo.News", t => t.NewsId, cascadeDelete: true)
+                .ForeignKey("dbo.News", t => t.ParentCommentId)
+                .ForeignKey("dbo.UserProfiles", t => t.UserProfileId, cascadeDelete: true)
                 .ForeignKey("dbo.News", t => t.News_Id)
-                .ForeignKey("dbo.News", t => t.ParentComment_Id)
-                .ForeignKey("dbo.UserProfiles", t => t.UserProfile_Id)
-                .ForeignKey("dbo.News", t => t.News_Id1)
+                .Index(t => t.NewsId)
+                .Index(t => t.ParentCommentId)
+                .Index(t => t.UserProfileId)
                 .Index(t => t.NewsComment_Id)
-                .Index(t => t.News_Id)
-                .Index(t => t.ParentComment_Id)
-                .Index(t => t.UserProfile_Id)
-                .Index(t => t.News_Id1);
+                .Index(t => t.News_Id);
             
             CreateTable(
                 "dbo.Likes",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
                         NewsId = c.Int(nullable: false),
                         CommentId = c.Int(nullable: false),
@@ -163,23 +177,21 @@ namespace ETran.Data.Migrations
                         ModifiedBy = c.Int(),
                         DeletedDate = c.DateTime(),
                         DeletedBy = c.Int(),
-                        DocumentComment_Id = c.Guid(),
-                        DocumentNews_Id = c.Guid(),
-                        User_Id = c.Guid(),
+                        DocumentComment_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.NewsComments", t => t.DocumentComment_Id)
-                .ForeignKey("dbo.News", t => t.DocumentNews_Id)
-                .ForeignKey("dbo.UserProfiles", t => t.User_Id)
-                .Index(t => t.DocumentComment_Id)
-                .Index(t => t.DocumentNews_Id)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.News", t => t.NewsId, cascadeDelete: true)
+                .ForeignKey("dbo.UserProfiles", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.NewsId)
+                .Index(t => t.DocumentComment_Id);
             
             CreateTable(
                 "dbo.UserProfiles",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         UserName = c.String(maxLength: 50),
                         Password = c.String(maxLength: 50),
                         ConfirmPassword = c.String(maxLength: 50),
@@ -199,17 +211,16 @@ namespace ETran.Data.Migrations
                         ModifiedBy = c.Int(),
                         DeletedDate = c.DateTime(),
                         DeletedBy = c.Int(),
-                        Country_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Countries", t => t.Country_Id)
-                .Index(t => t.Country_Id);
+                .ForeignKey("dbo.Countries", t => t.CountryId)
+                .Index(t => t.CountryId);
             
             CreateTable(
                 "dbo.UserRoles",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         UserProfileId = c.Int(nullable: false),
                         RoleId = c.Int(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
@@ -219,20 +230,18 @@ namespace ETran.Data.Migrations
                         ModifiedBy = c.Int(),
                         DeletedDate = c.DateTime(),
                         DeletedBy = c.Int(),
-                        Role_Id = c.Guid(),
-                        UserProfile_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Roles", t => t.Role_Id)
-                .ForeignKey("dbo.UserProfiles", t => t.UserProfile_Id)
-                .Index(t => t.Role_Id)
-                .Index(t => t.UserProfile_Id);
+                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.UserProfiles", t => t.UserProfileId, cascadeDelete: true)
+                .Index(t => t.UserProfileId)
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.Roles",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(maxLength: 256),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
@@ -248,7 +257,7 @@ namespace ETran.Data.Migrations
                 "dbo.ShareNews",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         NewsId = c.Int(nullable: false),
                         Users = c.String(),
                         IsMailSent = c.Boolean(),
@@ -259,17 +268,16 @@ namespace ETran.Data.Migrations
                         ModifiedBy = c.Int(),
                         DeletedDate = c.DateTime(),
                         DeletedBy = c.Int(),
-                        News_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.News", t => t.News_Id)
-                .Index(t => t.News_Id);
+                .ForeignKey("dbo.News", t => t.NewsId, cascadeDelete: true)
+                .Index(t => t.NewsId);
             
             CreateTable(
                 "dbo.Status",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         IsDeleted = c.Boolean(nullable: false),
                         CreatedDate = c.DateTime(nullable: false),
@@ -285,7 +293,7 @@ namespace ETran.Data.Migrations
                 "dbo.UserLoginHistories",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         UserId = c.Int(nullable: false),
                         AccessToken = c.Guid(nullable: false),
                         IsLoggedOut = c.Boolean(nullable: false),
@@ -297,48 +305,47 @@ namespace ETran.Data.Migrations
                         ModifiedBy = c.Int(),
                         DeletedDate = c.DateTime(),
                         DeletedBy = c.Int(),
-                        User_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UserProfiles", t => t.User_Id)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.UserProfiles", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UserLoginHistories", "User_Id", "dbo.UserProfiles");
-            DropForeignKey("dbo.News", "Status_Id", "dbo.Status");
-            DropForeignKey("dbo.ShareNews", "News_Id", "dbo.News");
-            DropForeignKey("dbo.NewsComments", "News_Id1", "dbo.News");
-            DropForeignKey("dbo.NewsComments", "UserProfile_Id", "dbo.UserProfiles");
-            DropForeignKey("dbo.NewsComments", "ParentComment_Id", "dbo.News");
-            DropForeignKey("dbo.Likes", "User_Id", "dbo.UserProfiles");
-            DropForeignKey("dbo.UserRoles", "UserProfile_Id", "dbo.UserProfiles");
-            DropForeignKey("dbo.UserRoles", "Role_Id", "dbo.Roles");
-            DropForeignKey("dbo.UserProfiles", "Country_Id", "dbo.Countries");
-            DropForeignKey("dbo.Likes", "DocumentNews_Id", "dbo.News");
-            DropForeignKey("dbo.Likes", "DocumentComment_Id", "dbo.NewsComments");
+            DropForeignKey("dbo.UserLoginHistories", "UserId", "dbo.UserProfiles");
+            DropForeignKey("dbo.News", "StatusId", "dbo.Status");
+            DropForeignKey("dbo.ShareNews", "NewsId", "dbo.News");
             DropForeignKey("dbo.NewsComments", "News_Id", "dbo.News");
+            DropForeignKey("dbo.NewsComments", "UserProfileId", "dbo.UserProfiles");
+            DropForeignKey("dbo.NewsComments", "ParentCommentId", "dbo.News");
+            DropForeignKey("dbo.Likes", "UserId", "dbo.UserProfiles");
+            DropForeignKey("dbo.UserRoles", "UserProfileId", "dbo.UserProfiles");
+            DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
+            DropForeignKey("dbo.UserProfiles", "CountryId", "dbo.Countries");
+            DropForeignKey("dbo.Likes", "NewsId", "dbo.News");
+            DropForeignKey("dbo.Likes", "DocumentComment_Id", "dbo.NewsComments");
+            DropForeignKey("dbo.NewsComments", "NewsId", "dbo.News");
             DropForeignKey("dbo.NewsComments", "NewsComment_Id", "dbo.NewsComments");
-            DropForeignKey("dbo.News", "Image_Id", "dbo.CoverImages");
-            DropForeignKey("dbo.News", "Category_Id", "dbo.Categories");
-            DropIndex("dbo.UserLoginHistories", new[] { "User_Id" });
-            DropIndex("dbo.ShareNews", new[] { "News_Id" });
-            DropIndex("dbo.UserRoles", new[] { "UserProfile_Id" });
-            DropIndex("dbo.UserRoles", new[] { "Role_Id" });
-            DropIndex("dbo.UserProfiles", new[] { "Country_Id" });
-            DropIndex("dbo.Likes", new[] { "User_Id" });
-            DropIndex("dbo.Likes", new[] { "DocumentNews_Id" });
+            DropForeignKey("dbo.News", "ImageId", "dbo.CoverImages");
+            DropForeignKey("dbo.News", "CategoryId", "dbo.Categories");
+            DropIndex("dbo.UserLoginHistories", new[] { "UserId" });
+            DropIndex("dbo.ShareNews", new[] { "NewsId" });
+            DropIndex("dbo.UserRoles", new[] { "RoleId" });
+            DropIndex("dbo.UserRoles", new[] { "UserProfileId" });
+            DropIndex("dbo.UserProfiles", new[] { "CountryId" });
             DropIndex("dbo.Likes", new[] { "DocumentComment_Id" });
-            DropIndex("dbo.NewsComments", new[] { "News_Id1" });
-            DropIndex("dbo.NewsComments", new[] { "UserProfile_Id" });
-            DropIndex("dbo.NewsComments", new[] { "ParentComment_Id" });
+            DropIndex("dbo.Likes", new[] { "NewsId" });
+            DropIndex("dbo.Likes", new[] { "UserId" });
             DropIndex("dbo.NewsComments", new[] { "News_Id" });
             DropIndex("dbo.NewsComments", new[] { "NewsComment_Id" });
-            DropIndex("dbo.News", new[] { "Status_Id" });
-            DropIndex("dbo.News", new[] { "Image_Id" });
-            DropIndex("dbo.News", new[] { "Category_Id" });
+            DropIndex("dbo.NewsComments", new[] { "UserProfileId" });
+            DropIndex("dbo.NewsComments", new[] { "ParentCommentId" });
+            DropIndex("dbo.NewsComments", new[] { "NewsId" });
+            DropIndex("dbo.News", new[] { "StatusId" });
+            DropIndex("dbo.News", new[] { "CategoryId" });
+            DropIndex("dbo.News", new[] { "ImageId" });
             DropTable("dbo.UserLoginHistories");
             DropTable("dbo.Status");
             DropTable("dbo.ShareNews");
@@ -350,6 +357,7 @@ namespace ETran.Data.Migrations
             DropTable("dbo.News");
             DropTable("dbo.CoverImages");
             DropTable("dbo.Countries");
+            DropTable("dbo.Contacts");
             DropTable("dbo.Categories");
             DropTable("dbo.Attachments");
         }

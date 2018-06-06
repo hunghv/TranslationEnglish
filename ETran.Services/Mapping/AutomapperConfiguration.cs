@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ETran.Data.Entities;
+using ETran.Services.ViewModels.Request;
 
 namespace ETran.Services.Mapping
 {
@@ -8,7 +10,8 @@ namespace ETran.Services.Mapping
         {
             Mapper.Initialize(cfg =>
             {
-                
+                cfg.CreateMap<Contact, ContactViewModel>();
+                cfg.CreateMap<ContactViewModel, Contact>();
             });
         }
     }

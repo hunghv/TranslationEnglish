@@ -1,6 +1,10 @@
-﻿using ETran.Data.Repository.Interfaces;
+﻿using System;
+using AutoMapper;
+using ETran.Data.Entities;
+using ETran.Data.Repository.Interfaces;
 using ETran.Services.Common;
 using ETran.Services.Services.Interfaces;
+using ETran.Services.ViewModels.Request;
 
 namespace ETran.Services.Services.Services
 {
@@ -8,45 +12,36 @@ namespace ETran.Services.Services.Services
     {
         #region Declare Property
 
-        private readonly ICategoriesRepository _categoriesRepository;
-        private readonly ICountryRepository _countryRepository;
-
+        private readonly IContactRepository _contactRepository;
+        private readonly DateTime _dateTime= DateTime.Now;
         #endregion
 
         #region Constructure
 
-        public AdminServices(ICategoriesRepository categoriesRepository, ICountryRepository countryRepository)
+        public AdminServices(IContactRepository contactRepository)
         {
-            _categoriesRepository = categoriesRepository;
-            _countryRepository = countryRepository;
+            _contactRepository = contactRepository;
         }
 
         #endregion
 
         #region Public Method 
-        public IPagedResults<string> GetCategories()
+        public int SaveContact(ContactViewModel model)
         {
-//            var respone = new PagedResults<CategoriesResponse>();
-//            var query = _categoriesRepository.GetAllNoneDeleted();
-//            respone.Total = query.Count();
-//            //sort  data
-//            if (!string.IsNullOrEmpty(request?.SortField))
-//            {
-//                OrderBy(ref query, request);
-//            }
-//            else
-//            {
-//                query = query.OrderBy(x => x.Name);
-//            }
-//            //pagging data
-//            if (request?.Skip != null && request.Take.HasValue)
-//            {
-//                Paging(ref query, request);
-//            }
-//            var result = Mapper.Map<List<Categories>, List<CategoriesResponse>>(query.ToList());
-//            respone.Data = result;
-//            return respone;
-            return null;
+
+            try
+            {
+                model.CreatedBy = Constants.GetUserId();
+                model.CreatedDate = _dateTime;
+                var entity = Mapper.Map<ContactViewModel, Contact> (model);
+                _contactRepository.Add(entity);
+                _contactRepository.Commit();
+                return entity.Id;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
         #endregion
     }

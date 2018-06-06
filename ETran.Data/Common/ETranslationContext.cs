@@ -21,6 +21,7 @@ namespace ETran.Data.Common
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

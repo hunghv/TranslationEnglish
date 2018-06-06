@@ -70,6 +70,7 @@
     <Compile Include="Services\Services\AdminServices.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
     <Compile Include="ViewModels\PagingRequest.cs" />
+    <Compile Include="ViewModels\Request\ContactViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ETran.Data\ETran.Data.csproj">
@@ -80,6 +81,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\Response\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

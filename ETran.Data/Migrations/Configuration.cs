@@ -9,7 +9,7 @@ namespace ETran.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(ETran.Data.Common.ETranslationContext context)

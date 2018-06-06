@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ETran.Services.ViewModels
+﻿namespace ETran.Services.ViewModels
 {
     public class EmailViewModel
     {

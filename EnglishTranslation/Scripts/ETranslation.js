@@ -19,6 +19,7 @@ function gotoContact() {
 function gotoService() {
   window.location.href = Etran.ServicesUrl;
 }
+
 function slideSwitch() {
   var $active = $('#slideshow IMG.active');
   var $next = $active.next();

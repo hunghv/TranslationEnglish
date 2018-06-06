@@ -6,7 +6,7 @@ namespace ETran.Data.Entities.Base
     public class Entity
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }

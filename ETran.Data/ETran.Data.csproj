@@ -52,6 +52,7 @@
     <Compile Include="Common\ETranslationContext.cs" />
     <Compile Include="Entities\Attachment.cs" />
     <Compile Include="Entities\Base\Entity.cs" />
+    <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\Like.cs" />
     <Compile Include="Entities\Categories.cs" />
     <Compile Include="Entities\Country.cs" />
@@ -64,9 +65,9 @@
     <Compile Include="Entities\UserLoginHistory.cs" />
     <Compile Include="Entities\UserProfile.cs" />
     <Compile Include="Entities\UserRole.cs" />
-    <Compile Include="Migrations\201806060835220_Initial.cs" />
-    <Compile Include="Migrations\201806060835220_Initial.Designer.cs">
-      <DependentUpon>201806060835220_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201806061504239_InitDB.cs" />
+    <Compile Include="Migrations\201806061504239_InitDB.Designer.cs">
+      <DependentUpon>201806061504239_InitDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Repository\Base\IEntityBaseRepository.cs" />
     <Compile Include="Repository\Implementation\AttachmentRepository.cs" />
     <Compile Include="Repository\Implementation\CategoriesRepository.cs" />
+    <Compile Include="Repository\Implementation\ContactRepository.cs" />
     <Compile Include="Repository\Implementation\CountryRepository.cs" />
     <Compile Include="Repository\Implementation\CoverImagesRepository.cs" />
     <Compile Include="Repository\Implementation\LikeRepository.cs" />
@@ -88,13 +90,13 @@
     <Compile Include="Repository\Interfaces\IRepositories.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806060835220_Initial.resx">
-      <DependentUpon>201806060835220_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806061504239_InitDB.resx">
+      <DependentUpon>201806061504239_InitDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

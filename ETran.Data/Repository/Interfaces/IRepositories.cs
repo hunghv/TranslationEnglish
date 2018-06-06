@@ -16,4 +16,5 @@ namespace ETran.Data.Repository.Interfaces
     public interface IStatusRepository : IEntityBaseRepository<Status> { }
     public interface IUserLoginHistoryRepository : IEntityBaseRepository<UserLoginHistory> { }
     public interface IUserProfileRepository : IEntityBaseRepository<UserProfile> { }
+    public interface IContactRepository : IEntityBaseRepository<Contact> { }
 }

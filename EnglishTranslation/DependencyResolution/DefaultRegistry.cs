@@ -1,6 +1,8 @@
 ﻿using ETran.Data.Common;
 using ETran.Data.Repository.Implementation;
 using ETran.Data.Repository.Interfaces;
+using ETran.Services.Services.Interfaces;
+using ETran.Services.Services.Services;
 using StructureMap;
 
 namespace EnglishTranslation.DependencyResolution
@@ -21,7 +23,7 @@ namespace EnglishTranslation.DependencyResolution
             For<ETranslationContext>().Use<ETranslationContext>();
 
             //Services
-//            For<IAdminServices>().Use<AdminServices>();
+           For<IAdminServices>().Use<AdminServices>();
 //            For<IUserProfileServices>().Use<UserProfileServices>();
 
             //Repository
@@ -38,6 +40,7 @@ namespace EnglishTranslation.DependencyResolution
             For<IUserLoginHistoryRepository>().Use<UserLoginHistoryRepository>();
             For<IUserProfileRepository>().Use<UserProfileRepository>();
             For<IUserRoleRepository>().Use<UserRoleRepository>();
+            For<IContactRepository>().Use<ContactRepository>();
         }
 
        

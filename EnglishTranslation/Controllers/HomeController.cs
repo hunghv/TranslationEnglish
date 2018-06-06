@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using ETran.Services.Services.Interfaces;
+using ETran.Services.ViewModels.Request;
 
 namespace EnglishTranslation.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IAdminServices _adminServices;
+
+        public HomeController(IAdminServices adminServices)
+        {
+            _adminServices = adminServices;
+        }
         public ActionResult Index()
         {
             return View();
@@ -37,6 +41,12 @@ namespace EnglishTranslation.Controllers
         public ActionResult Commtor()
         {
             return View();
+        }
+
+        public ActionResult SaveContact(ContactViewModel model)
+        {
+            var result = _adminServices.SaveContact(model);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

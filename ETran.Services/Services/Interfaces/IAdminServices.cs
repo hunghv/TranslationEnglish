@@ -1,9 +1,9 @@
-﻿using ETran.Services.Common;
+﻿using ETran.Services.ViewModels.Request;
 
 namespace ETran.Services.Services.Interfaces
 {
-    interface IAdminServices
+    public interface IAdminServices
     {
-        IPagedResults<string> GetCategories();
+        int SaveContact(ContactViewModel model);
     }
 }
