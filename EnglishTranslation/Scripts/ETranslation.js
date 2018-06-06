@@ -1,23 +1,23 @@
-﻿$(document).ready(function () {
+﻿var Etran={}
+$(document).ready(function () {
   setInterval("slideSwitch()", 5000);
 });
-
 function gotoHome() {
-
+  window.location.href = Etran.HomeUrl;
 }
 function gotoAbout() {
-
+  window.location.href = Etran.AboutUrl;
 }
 function gotoCommtor() {
-
+  window.location.href = Etran.Commtor;
 }
 
 function gotoContact() {
-
+  window.location.href = Etran.ContactUrl;
 }
 
-function gotoContact() {
-
+function gotoService() {
+  window.location.href = Etran.ServicesUrl;
 }
 function slideSwitch() {
   var $active = $('#slideshow IMG.active');

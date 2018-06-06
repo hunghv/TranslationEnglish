@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishTranslation", "EnglishTranslation\EnglishTranslation.csproj", "{A8D8A1CB-D0D8-40E4-B39B-32BA3C5342D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETran.Data", "ETran.Data\ETran.Data.csproj", "{6FE1B7C3-3649-4410-9C3F-30AE08ACB2E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETran.Services", "ETran.Services\ETran.Services.csproj", "{DD2D2006-586B-4AEA-9E04-3F2FDEDCF9B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A8D8A1CB-D0D8-40E4-B39B-32BA3C5342D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8D8A1CB-D0D8-40E4-B39B-32BA3C5342D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8D8A1CB-D0D8-40E4-B39B-32BA3C5342D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FE1B7C3-3649-4410-9C3F-30AE08ACB2E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FE1B7C3-3649-4410-9C3F-30AE08ACB2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FE1B7C3-3649-4410-9C3F-30AE08ACB2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FE1B7C3-3649-4410-9C3F-30AE08ACB2E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD2D2006-586B-4AEA-9E04-3F2FDEDCF9B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD2D2006-586B-4AEA-9E04-3F2FDEDCF9B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD2D2006-586B-4AEA-9E04-3F2FDEDCF9B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD2D2006-586B-4AEA-9E04-3F2FDEDCF9B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

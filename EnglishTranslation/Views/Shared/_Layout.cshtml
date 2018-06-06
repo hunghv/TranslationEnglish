@@ -13,6 +13,13 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/ETranslation.js"></script>
     <link href="~/Content/Etran.css" rel="stylesheet" />
+    <script type="text/javascript">
+        Etran.HomeUrl = "@Url.Action("Index", "Home")";
+        Etran.AboutUrl = "@Url.Action("About", "Home")";
+        Etran.ContactUrl = '@Url.Action("Contact", "Home")';
+        Etran.ServicesUrl = '@Url.Action("Services", "Home")';
+        Etran.Commtor = '@Url.Action("Commtor", "Home")';
+    </script>
 </head>
 <body>
     <div class="wrap">
@@ -27,7 +34,7 @@
                         <li><a onclick="gotoAbout()"><span>About</span></a></li>
                         <li><a onclick="gotoCommtor()"><span>Commtor</span></a></li>
                         <li class="has-sub"><a onclick="gotoService()"><span>Services</span></a></li>
-                        <li class="last"><a onclick="gotoContact"><span>Contact</span></a></li>
+                        <li class="last"><a onclick="gotoContact()"><span>Contact</span></a></li>
                         <div class="clear"></div>
                     </ul>
                 </div>
@@ -53,9 +60,9 @@
                         <div class="clear"></div>
                     </ul>
                 </div>
-                <a href="index.html"><h2>Bright Day</h2></a>
+                <a onclick="gotoHome()"><h2>Bright Day</h2></a>
                 <div class="copy">
-                    <p class="w3-link">© 2013 Bright Day. All Rights Reserved | Design by&nbsp; <a href="http://w3layouts.com/"> Bright Day Center System</a></p>
+                    <p class="w3-link">© 2013 Bright Day. All Rights Reserved | Design by&nbsp; <a onclick="gotoHome()"> Bright Day Center System</a></p>
                 </div>
             </div>
         </div>
