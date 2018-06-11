@@ -2,29 +2,18 @@
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model EnglishTranslation.Models.ContactViewModelDis
+
+<style type="text/css">
+   .redColor {
+       color: red
+     }
+</style>
+
 <script type="text/javascript">
     Etran.SaveContact = "@Url.Action("SaveContact", "Home")";
-    function SaveContact() {
-        debugger;
-        var model = {}
-        model.Name = $("#userName").val();
-        model.Email = $("#userEmail").val();
-        model.Phone = $("#userPhone").val();
-        model.Subject = $("#userMsg").val();
-        model.IsSendMail = true;
-        $.ajax({
-            url: Etran.SaveContact,
-            type: "POST",
-            data: model,
-            success: function (response) {
-                $("#ContactUs").hide();
-            },
-            error: function (response) {
-              //  showMessage("error", "Unsuccessful", response.MessagesDisplay);
-            }
-        });
-    }
 </script>
+<script src="~/Scripts/app/Contact.js"></script>
 <div class="main_bg">
     <div class="wrap">
         <div class="wrapper">
@@ -34,7 +23,7 @@
                         <div class="contact_info">
                             <h2 class="style">Find Us Here</h2>
                             <div class="map">
-                                <iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color: #1ABC9C;text-align:left;font-size:13px">View Larger Map</a></small>
+                                <iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.8371332370193!2d105.73879742090891!3d20.95905468312355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313452fa04f0058f%3A0x9347c7d0fe6b8b05!2sChung+c%C6%B0+Xu%C3%A2n+Mai+Complex!5e0!3m2!1sen!2smy!4v1528737611086"></iframe><br><small><a href="https://www.google.com/maps/place/Chung+c%C6%B0+Xu%C3%A2n+Mai+Complex/20.9590547,105.7387974,17z/data=!4m5!3m4!1s0x313452fa04f0058f:0x9347c7d0fe6b8b05!8m2!3d20.9604323!4d105.7413187" style="color: #1ABC9C;text-align:left;font-size:13px">View Larger Map</a></small>
                             </div>
                         </div>
                         <div class="company_address">
@@ -45,33 +34,38 @@
                             <p>Phone:(+84) 01656226275</p>
                             <p>Fax: (000) 000 00 00 0</p>
                             <p>Email: <span><a href="mailto:info@example.com">mail@example.com</a></span></p>
-                            <p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
+                            <p>Follow on: <span onclick="window.open('https://www.facebook.com/D%E1%BB%8Bch-Thu%E1%BA%ADt-Anh-Vi%E1%BB%87t-Anh-Gi%C3%A1-R%E1%BA%BB-Ch%E1%BA%A5t-L%C6%B0%E1%BB%A3ng-1947843105460145/')">Facebook</span>, <span>Twitter</span></p>
                         </div>
                         <div class="clear"></div>
                     </div>
                     <div id="thank">Thanks you for response</div>
-                    <div class="col span_2_of_4" id="ContactUs">
+                    <div class="col" id="ContactUs">
                         <div class="contact-form">
                             <h2 class="style">Contact Us</h2>
-                            <form method="post" action="#">
+                            <form method="post">
                                 <div>
-                                    <span><label>NAME</label></span>
-                                    <span><input name="userName" id="userName" type="text" class="textbox"></span>
+                                   @Html.DisplayNameFor(model => model.UserName)
+                                    @Html.TextBoxFor(model=>model.UserName)
+                                    <span style="color: red" class="redColor" id="EnterName">Please Enter Name</span>
                                 </div>
                                 <div>
-                                    <span><label>E-MAIL</label></span>
-                                    <span><input name="userEmail" id="userEmail" type="text" class="textbox"></span>
+                                    @Html.DisplayNameFor(model => model.UserEmail)
+                                    @Html.TextBoxFor(model=>model.UserEmail)
+                                    <span style="color: red" class="redColor" id="EnterEmail">Please Enter Email Address</span>
+                                    <span style="color: red" class="redColor" id="EmailCorrect">Please Enter Correct Email Address</span>
                                 </div>
                                 <div>
-                                    <span><label>MOBILE</label></span>
-                                    <span><input name="userPhone" id="userPhone" type="text" class="textbox"></span>
+                                    @Html.DisplayNameFor(model => model.UserPhone)
+                                    @Html.TextBoxFor(model=>model.UserPhone)
+                                    <span style="color: red" class="redColor" id="EnterPhone">Please Enter Phone Number</span>
+                                    <span  style="color: red" class="redColor" id="PhoneCorrect">The Mobile must contains 10 characters</span>
                                 </div>
                                 <div>
-                                    <span><label>SUBJECT</label></span>
-                                    <span><textarea name="userMsg" id="userMsg"> </textarea></span>
+                                    @Html.DisplayNameFor(model => model.UserMsg)
+                                    @Html.TextAreaFor(model=>model.UserMsg)
                                 </div>
                                 <div>
-                                    <a onclick="SaveContact()" class="btn btn_s">send me</a>
+                                    <a class="btn btn_s" onclick="SaveContact()">send me</a>
                                 </div>
                             </form>
                         </div>

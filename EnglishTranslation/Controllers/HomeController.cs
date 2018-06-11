@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using EnglishTranslation.Models;
 using ETran.Services.Services.Interfaces;
 using ETran.Services.ViewModels.Request;
 
@@ -26,9 +27,14 @@ namespace EnglishTranslation.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Services()
@@ -43,10 +49,26 @@ namespace EnglishTranslation.Controllers
             return View();
         }
 
-        public ActionResult SaveContact(ContactViewModel model)
+        public ActionResult SaveContact(ContactViewModelDis model)
         {
-            var result = _adminServices.SaveContact(model);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var entity = new ContactViewModel
+            {
+                Phone = model.UserPhone,
+                Name = model.UserName,
+                Subject = model.UserMsg,
+                Email = model.UserEmail,
+                IsSendMail = true
+            };
+            var result = _adminServices.SaveContact(entity);
+            if (result == 0)
+            {
+                return View("Contact");
+            }
+            else
+            {
+                return View("Index");
+            }
+           
         }
     }
 }
