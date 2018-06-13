@@ -39,3 +39,15 @@ function slideSwitch() {
       $active.removeClass('active last-active');
     });
 }
+
+function printDocument(documentId) {
+  debugger;
+  var doc = document.getElementById(documentId);
+
+  //Wait until PDF is ready to print    
+  if (typeof doc.print === 'undefined') {
+    setTimeout(function () { printDocument(documentId); }, 1000);
+  } else {
+    doc.print();
+  }
+}

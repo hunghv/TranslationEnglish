@@ -9,12 +9,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='//fonts.googleapis.com/css?family=Cagliostro' rel='stylesheet' type='text/css'>
-    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
-    <script src="~/Scripts/toastr.js"></script>
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/ETranslation.js"></script>
-    <link href="~/Content/Etran.css" rel="stylesheet" />
 
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/app/ETranslation.js"></script>
+    <link href="~/Content/Etran.css" rel="stylesheet" />
+    <link href="~/Scripts/Directive/print.min.css" rel="stylesheet" />
+    <script src="~/Scripts/Directive/print.min.js"></script>
     <script type="text/javascript">
         Etran.HomeUrl = "@Url.Action("Index", "Home")";
         Etran.AboutUrl = "@Url.Action("About", "Home")";
@@ -22,6 +24,7 @@
         Etran.ServicesUrl = '@Url.Action("Services", "Home")';
         Etran.Commtor = '@Url.Action("Commtor", "Home")';
     </script>
+    <style type="text/css">.removeActive { }</style>
 </head>
 <body>
     <div class="wrap">
@@ -32,11 +35,11 @@
             <div class="header_right">
                 <div class="cssmenu">
                     <ul>
-                        <li class="active"><a onclick="gotoHome()"><span>Home</span></a></li>
-                        <li><a onclick="gotoAbout()"><span>About</span></a></li>
-                        <li><a onclick="gotoCommtor()"><span>Commtor</span></a></li>
-                        <li class="has-sub"><a onclick="gotoService()"><span>Services</span></a></li>
-                        <li class="last"><a onclick="gotoContact()"><span>Contact</span></a></li>
+                        <li id="gotoHome" class="active removeActive"><a onclick="gotoHome()"><span>Trang Chủ</span></a></li>
+                        <li id="gotoAbout" class="removeActive"><a onclick="gotoAbout()"><span>Giới Thiệu</span></a></li>
+                        <li id="gotoCommtor"class="removeActive"><a onclick="gotoCommtor()"><span>Báo Giá</span></a></li>
+                        <li id="gotoService"class="removeActive"><a onclick="gotoService()"><span>Tin Tức</span></a></li>
+                        <li class="last removeActive"id="gotoContact"><a onclick="gotoContact()"><span>Liên Hệ</span></a></li>
                         <div class="clear"></div>
                     </ul>
                 </div>
@@ -55,10 +58,10 @@
             <div class="footer">
                 <div class="social-icons">
                     <ul>
-                        <li class="icon_1"><a href="#" target="_blank"> </a></li>
-                        <li class="icon_2"><a href="#" target="_blank"> </a></li>
-                        <li class="icon_3"><a href="#" target="_blank"> </a></li>
-                        <li class="icon_4"><a href="#" target="_blank"> </a></li>
+                        <li class="icon_1"><a href="https://www.facebook.com/D%E1%BB%8Bch-Thu%E1%BA%ADt-Anh-Vi%E1%BB%87t-Anh-Gi%C3%A1-R%E1%BA%BB-Ch%E1%BA%A5t-L%C6%B0%E1%BB%A3ng-1947843105460145/"> </a></li>
+                        <li class="icon_2"><a href="https://www.facebook.com/D%E1%BB%8Bch-Thu%E1%BA%ADt-Anh-Vi%E1%BB%87t-Anh-Gi%C3%A1-R%E1%BA%BB-Ch%E1%BA%A5t-L%C6%B0%E1%BB%A3ng-1947843105460145/"> </a></li>
+                        <li class="icon_3"><a href="https://www.facebook.com/D%E1%BB%8Bch-Thu%E1%BA%ADt-Anh-Vi%E1%BB%87t-Anh-Gi%C3%A1-R%E1%BA%BB-Ch%E1%BA%A5t-L%C6%B0%E1%BB%A3ng-1947843105460145/"> </a></li>
+                        <li class="icon_4"><a href="https://www.facebook.com/D%E1%BB%8Bch-Thu%E1%BA%ADt-Anh-Vi%E1%BB%87t-Anh-Gi%C3%A1-R%E1%BA%BB-Ch%E1%BA%A5t-L%C6%B0%E1%BB%A3ng-1947843105460145/"> </a></li>
                         <div class="clear"></div>
                     </ul>
                 </div>

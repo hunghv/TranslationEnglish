@@ -286,6 +286,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsDetailController.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
@@ -333,6 +334,8 @@
     <Content Include="images\pic1.jpg" />
     <Content Include="images\pic3.jpg" />
     <Content Include="images\previous.png" />
+    <Content Include="images\resource\3.jpg" />
+    <Content Include="images\resource\5.jpg" />
     <Content Include="images\right_a.png" />
     <Content Include="images\ser_pic1.jpg" />
     <Content Include="images\ser_pic2.jpg" />
@@ -342,7 +345,11 @@
     <Content Include="images\slider2.jpg" />
     <Content Include="images\slider3.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\app\About.js" />
+    <Content Include="Scripts\app\Baogia.js" />
     <Content Include="Scripts\app\Contact.js" />
+    <Content Include="Scripts\app\Home.js" />
+    <Content Include="Scripts\app\News.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -355,13 +362,13 @@
     <Content Include="Guideline\Document Build Structure Web APi.docx" />
     <Content Include="Guideline\GuidelineBuilFuseApp.docx" />
     <Content Include="Scripts\camera.min.js" />
-    <Content Include="Scripts\Directive\additional-methods.min.js" />
-    <Content Include="Scripts\Directive\jquery.validate.min.js" />
+    <Content Include="Scripts\Directive\print.min.css" />
+    <Content Include="Scripts\Directive\print.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\ETranslation.js" />
+    <Content Include="Scripts\app\ETranslation.js" />
     <Content Include="Scripts\esm\popper.min.js.map" />
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
@@ -376,7 +383,23 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\font\webfonts\fa-brands-400.eot" />
+    <Content Include="Scripts\font\webfonts\fa-brands-400.ttf" />
+    <Content Include="Scripts\font\webfonts\fa-brands-400.woff" />
+    <Content Include="Scripts\font\webfonts\fa-brands-400.woff2" />
+    <Content Include="Scripts\font\webfonts\fa-regular-400.eot" />
+    <Content Include="Scripts\font\webfonts\fa-regular-400.ttf" />
+    <Content Include="Scripts\font\webfonts\fa-regular-400.woff" />
+    <Content Include="Scripts\font\webfonts\fa-regular-400.woff2" />
+    <Content Include="Scripts\font\webfonts\fa-solid-900.eot" />
+    <Content Include="Scripts\font\webfonts\fa-solid-900.ttf" />
+    <Content Include="Scripts\font\webfonts\fa-solid-900.woff" />
+    <Content Include="Scripts\font\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\font\fontawesome.css" />
+    <Content Include="Scripts\font\webfonts\fa-brands-400.svg" />
+    <Content Include="Scripts\font\webfonts\fa-regular-400.svg" />
+    <Content Include="Scripts\font\webfonts\fa-solid-900.svg" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -449,6 +472,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\NewsDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

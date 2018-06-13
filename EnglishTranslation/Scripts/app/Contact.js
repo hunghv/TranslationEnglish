@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
   $(".redColor").hide();
+  $(".removeActive").removeClass("active");
+  $("#gotoContact").addClass("active");
 });
 function SaveContact() {
   var model = {}
@@ -48,7 +50,6 @@ function SaveContact() {
       success: function (response) {
       },
       error: function (response) {
-        //  showMessage("error", "Unsuccessful", response.MessagesDisplay);
       }
     });
   }
