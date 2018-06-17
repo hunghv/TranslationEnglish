@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using ETran.Data.Entities;
 using ETran.Data.Repository.Interfaces;
@@ -13,14 +15,16 @@ namespace ETran.Services.Services.Services
         #region Declare Property
 
         private readonly IContactRepository _contactRepository;
+        private readonly ICountryRepository _countryRepository;
         private readonly DateTime _dateTime= DateTime.Now;
         #endregion
 
         #region Constructure
 
-        public AdminServices(IContactRepository contactRepository)
+        public AdminServices(IContactRepository contactRepository, ICountryRepository countryRepository)
         {
             _contactRepository = contactRepository;
+            _countryRepository = countryRepository;
         }
 
         #endregion
@@ -38,11 +42,26 @@ namespace ETran.Services.Services.Services
                 _contactRepository.Commit();
                 return entity.Id;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
         }
+
+        public List<Country> GetCountry()
+        {
+            try
+            {
+                var query = _countryRepository.GetAllNoneDeleted().ToList();
+                
+                return query;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         #endregion
     }
 }

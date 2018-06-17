@@ -21,27 +21,29 @@ function SaveContact() {
   }
   if (model.Email !== "") {
     $("#EnterEmail").hide();
+    if (validateEmail(model.Email)) {
+      $("#EmailCorrect").hide();
+    } else {
+      $("#EmailCorrect").show();
+    }
   } else {
     $("#EnterEmail").show();
     flag = true;
   }
   if (model.Phone !== "") {
     $("#EnterPhone").hide();
+    if (validatePhone(model.Phone)) {
+      $("#PhoneCorrect").hide();
+    } else {
+      $("#PhoneCorrect").show();
+      flag = true;
+    }
   } else {
     $("#EnterPhone").show();
     flag = true;
   }
-  if (validateEmail(model.Email)) {
-    $("#EmailCorrect").hide();
-  } else {
-    $("#EmailCorrect").show();
-  }
-  if (validatePhone(model.Phone)) {
-    $("#PhoneCorrect").hide();
-  } else {
-    $("#PhoneCorrect").show();
-    flag = true;
-  }
+ 
+
   if (!flag) {
     $.ajax({
       url: Etran.SaveContact,

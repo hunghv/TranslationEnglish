@@ -1,0 +1,114 @@
+﻿@model EnglishTranslation.Models.BaoGiaViewModel
+@{
+    ViewBag.Title = "Commtor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .Pad-Top {
+        padding-top: 20px;
+    }
+</style>
+<script src="~/Scripts/app/Baogia.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/Css App/plugins.css" rel="stylesheet" />
+<script src="~/Content/Css App/bootstrap-fileinput.js"></script>
+<link href="~/Content/Css App/bootstrap-fileinput.css" rel="stylesheet" />
+<link href="~/Content/Css App/CustomComponent.css" rel="stylesheet" />
+<div class="wrap" style="padding-top: 100px">
+    <div class="wrapper">
+        <div>
+            <div>
+                <h2 class="text-uppercase">
+                    <span> Nhận báo giá miễn phí</span>
+                </h2>
+                <hr />
+                <div>
+                    <div>Lorem Ipsum chỉ đơn giản là văn bản giả của ngành in ấn và sắp chữ. Lorem Ipsum là văn bản giả chuẩn của ngành kể từ những năm 1500, khi một máy in không xác định lấy một galley kiểu và tranh giành nó để tạo ra một cuốn sách mẫu kiểu</div>
+                </div>
+                <!-- Form -->
+
+                <div class="row form-body">
+                    <div class="col-md-6">
+                        @Html.DisplayNameFor(model => model.Name)
+                        <div id="NameBaoGia" class="input-group form-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <div class="input-icon right">
+                                <i id="Name1" class="fa fa-info-circle" data-toggle="tooltip" title="Họ và Tên" data-container="body"></i>
+                                <i id="Name2" class="fa fa-check" data-toggle="tooltip" title="Ok!" data-container="body"></i>
+                                <i id="Name3" class="fa fa-exclamation" data-toggle="tooltip" title="Vui Lòng hãy nhập đúng tên của bạn" data-container="body"></i>
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DisplayNameFor(model => model.Phone)
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Điện thoại" })
+                        </div>
+                    </div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(model => model.Email)
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Địa chỉ mail" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(c => c.CountryValue)
+                        @Html.DropDownListFor(c => c.CountryValue, Model.Country, new { @class = "form-control" })
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(c => c.SourceValue)
+                        @Html.DropDownListFor(c => c.SourceValue, Model.Source, new { @class = "form-control" })
+
+                    </div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(c => c.DestinationValue)
+                        @Html.DropDownListFor(c => c.DestinationValue, Model.Destination, new { @class = "form-control" })
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(c => c.ServiceValue)
+                        @Html.DropDownListFor(c => c.ServiceValue, Model.Service, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(model => model.OtherService)
+                        @Html.TextBoxFor(model => model.OtherService, new { @class = "form-control disabled" })
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(c => c.UnitPayValue)
+                        @Html.DropDownListFor(c => c.UnitPayValue, Model.UnitPay, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-6 Pad-Top">
+                        @Html.DisplayNameFor(c => c.MethodPayValue)
+                        @Html.DropDownListFor(c => c.MethodPayValue, Model.MethodPay, new { @class = "form-control" })
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 Pad-Top">
+                        <textarea class="form-control" rows="10" name="Message" id="message" placeholder="Thông tin về bản dịch"></textarea>
+                    </div>
+
+                    <div class="col-md-12 text-left Pad-Top">
+                        <button class="btn green" onclick="SendRequest()">
+                            <i class="fa fa-check"></i>Gửi yêu cầu
+                        </button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <!-- /Form -->
+            </div>
+        </div>
+
+    </div>
+</div>

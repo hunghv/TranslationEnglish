@@ -280,7 +280,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Etran.css" />
+    <Content Include="Content\Css App\bootstrap-fileinput.css" />
+    <Content Include="Content\Css App\bootstrap-fileinput.js" />
+    <Content Include="Content\Css App\CustomComponent.css" />
+    <Content Include="Content\Css App\Etran.css" />
+    <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
+    <Compile Include="Areas\Administrator\Controllers\NewsAdminController.cs" />
     <Compile Include="Common\StructuremapMvc.cs" />
     <Compile Include="Common\StructuremapWebApi.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -297,6 +302,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BaoGiaViewModel.cs" />
     <Compile Include="Models\ContactViewModelDis.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -305,6 +311,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\camera.css" />
+    <Content Include="Content\Css App\plugins.css" />
     <Content Include="Content\jquery.lightbox.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
@@ -349,6 +356,7 @@
     <Content Include="Scripts\app\Baogia.js" />
     <Content Include="Scripts\app\Contact.js" />
     <Content Include="Scripts\app\Home.js" />
+    <Content Include="Content\Css App\components.css" />
     <Content Include="Scripts\app\News.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -395,6 +403,9 @@
     <Content Include="Scripts\font\webfonts\fa-solid-900.ttf" />
     <Content Include="Scripts\font\webfonts\fa-solid-900.woff" />
     <Content Include="Scripts\font\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Administrator\Views\web.config" />
+    <Content Include="Areas\Administrator\Views\NewsAdmin\Index.cshtml" />
+    <Content Include="Areas\Administrator\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\font\fontawesome.css" />
     <Content Include="Scripts\font\webfonts\fa-brands-400.svg" />
@@ -437,7 +448,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -462,7 +472,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
-    <Content Include="Views\Home\Commtor.cshtml" />
+    <Content Include="Views\Home\BaoGia.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -473,9 +483,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\NewsDetail\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administrator\Models\" />
+    <Folder Include="Scripts\app\Metronic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
